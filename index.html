@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Solo Leveing</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="sub-container">
+                <nav>
+                    <div class="logo">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#">Characters</a>
+                    <a class="nav-link" href="#">Help</a>
+                    <a class="nav-link" href="#">Login</a>
+                </nav>
+                <div class="video">
+                    <video autoplay="autoplay" muted loop>
+                        <source src="video/video.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="content-container">
+                    <div class="content">
+                        <div class="title">
+                            <span>S</span>
+                            RANK
+                        </div>
+                        <span>Shadow Monarch A.K.A</span>
+                        <h2><span>SUNG &nbsp;JIN &nbsp; WOO</span><small>(성진우)</small></h2>
+                        <p>Sung Jinwoo (성진우) is the main protagonist of Solo Leveling. Originally an infamously weak
+                            E-Rank Hunter, he got the chance of a lifetime when he was selected as the Player of the
+                            System, giving him the unique ability to grow in strength without restraint.
+
+                            <br>
+                            <br>
+
+                            As a result, by taking advantage of the opportunities offered to him by the System, Jinwoo
+                            eventually rose to power as humanity's greatest hunter and the second Shadow Monarch.
+                        </p>
+                    </div>
+                    <div class="side-nav">
+                        <a href="" class="side-nav-link active">About</a>
+                        <a href="" class="side-nav-link">Affiliation</a>
+                        <a href="" class="side-nav-link">Status</a>
+                        <a href="" class="side-nav-link">Relationships</a>
+                        <a href="" class="side-nav-link">Skills</a>
+                        <a href="" class="side-nav-link">Troops</a>
+                        <a href="" class="side-nav-link">Weapons & Eqs</a>
+                    </div>
+                </div>
+            </div>
+            <div class="character">
+                <img src="images/jin-woo.png" alt="">
+            </div>
+        </div>
+        <div class="main-video">
+            <video autoplay="autoplay" muted loop>
+                <source src="video/video.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </main>
+
+    <div class="loader">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="logo">
+            <img src="images/logo.png" alt="">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"> </script>
+    <script>
+        let element = document.querySelector(".content h2 span");
+        let text = element.textContent;
+        let splitTextElement = document.createElement("div");
+        splitTextElement.classList.add("split-text");
+        for (let i = 0; i < text.length; i++) {
+            let char = text.charAt(i);
+            let span = document.createElement("span");
+            span.textContent = char;
+            splitTextElement.appendChild(span);
+        }
+        element.parentNode.replaceChild(splitTextElement, element);
+
+        $('.container').tilt({
+            maxTilt: 2,
+            maxGlare: .5
+        })
+        
+        gsap.to(".loader .top", {
+            x: 500,
+            y: -500,
+            duration: 2,
+            delay: 1
+        })
+        gsap.to(".loader .bottom", {
+            x: -500,
+            y: 500,
+            duration: 2,
+            delay: 1
+        })
+        gsap.to(".loader .logo", {
+            opacity: 0,
+            delay: 2,
+            duration: 1,
+            display: "none"
+        })
+        gsap.to(".loader", {
+            opacity: 0,
+            delay: 3,
+            duration: 1,
+            display: "none"
+        })
+        gsap.to(".split-text span", {
+            y: 0,
+            opacity: 1,
+            delay: 3,
+            stagger: 0.05
+        });
+        gsap.from(".content p", {
+            y: 100,
+            opacity: 0,
+            delay: 3,
+            duration: 1
+        });
+        gsap.from(".character img", {
+            y: 200,
+            opacity: 0,
+            delay: 3,
+            duration: 1,
+            ease: "power2.outIn"
+        });
+    </script>
+</body>
+
+</html>
